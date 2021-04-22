@@ -86,7 +86,7 @@ export default class Login extends Component {
       }
     }
     // updates user preferences
-    axios.put("http://localhost:8001/api/user/update", { "id": JSON.parse(localStorage.getItem("user")).id, "categories": catlist, "countries": countryList })
+    axios.post("http://localhost:8080/hw4/UpdatePreferences.htm", { "username": JSON.parse(localStorage.getItem("user")).username, "categories": catlist, "countries": countryList })
     localStorage.setItem('userCntry', countryList);
     alert("Changes saved successfully!")
   }

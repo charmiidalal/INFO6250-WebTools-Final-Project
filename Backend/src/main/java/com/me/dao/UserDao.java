@@ -103,4 +103,18 @@ public class UserDao {
         }
         return true;
     }
+    
+    public boolean updateUser(User user) {
+        try {
+            beginTransaction();
+            getSession().update(user);
+            commit();
+        } catch (HibernateError e) {
+            rollback();
+        } finally {
+            close();
+        }
+        return true;
+    }
+    
 }

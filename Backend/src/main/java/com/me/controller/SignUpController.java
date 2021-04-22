@@ -36,6 +36,8 @@ public class SignUpController {
     @RequestMapping(value = "/signup.htm", method = RequestMethod.OPTIONS)
     public void corsHeaders(HttpServletResponse response) {
         response.addHeader("Access-Control-Allow-Origin", "http://localhost:8081");
+                response.addHeader("Access-Control-Allow-Methods","GET,PUT,POST,DELETE,OPTIONS");
+
     }
 
     @CrossOrigin(origins = "**", allowedHeaders = "*")

@@ -62,9 +62,10 @@ export default class Login extends Component {
     if (this.checkBtn.context._errors.length === 0) {
       AuthService.login(this.state.username, this.state.password).then(
         () => {
-          fetch("http://localhost:8001/api/user/getPreferences?id=" + JSON.parse(localStorage.getItem("user")).id).then((results) => { return results.json() }).then((results) => localStorage.setItem("userCat",results.categories))
-          fetch("http://localhost:8001/api/user/getPreferences?id=" + JSON.parse(localStorage.getItem("user")).id).then((results) => { return results.json() }).then((results) => localStorage.setItem("userCntry",results.countries))
-          fetch("http://localhost:8001/api/user/getPreferences?id=" + JSON.parse(localStorage.getItem("user")).id).then((results) => { return results.json() }).then((results) => localStorage.setItem("bookmarks",results.bookmarks))
+          debugger;
+          fetch("http://localhost:8080/hw4/GetPreferences.htm?username=" + JSON.parse(localStorage.getItem("user")).username).then((results) => { return results.json() }).then((results) => localStorage.setItem("userCat",results.categories))
+          fetch("http://localhost:8080/hw4/GetPreferences.htm?username=" + JSON.parse(localStorage.getItem("user")).username).then((results) => { return results.json() }).then((results) => localStorage.setItem("userCntry",results.countries))
+          fetch("http://localhost:8080/hw4/GetPreferences.htm?username=" + JSON.parse(localStorage.getItem("user")).username).then((results) => { return results.json() }).then((results) => localStorage.setItem("bookmarks",results.bookmarks))
           // localStorage.setItem("userCat",fetch("http://localhost:8001/api/user/getPreferences?id="+JSON.parse(localStorage.getItem("user")).id).then((results) => { return results.json() })).then((results) => {return results;})
           this.props.history.push("/");
 

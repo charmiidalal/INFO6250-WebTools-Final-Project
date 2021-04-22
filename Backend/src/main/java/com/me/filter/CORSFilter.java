@@ -20,7 +20,8 @@ package com.me.filter;
         public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
             HttpServletResponse httpResponse = (HttpServletResponse) servletResponse;
             httpResponse.addHeader("Access-Control-Allow-Origin", "*");
-            httpResponse.addHeader("Access-Control-Allow-Headers","Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+            httpResponse.addHeader("Access-Control-Allow-Headers","content-type, Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+            httpResponse.addHeader("Access-Contrl-Allow-Methods","PUT,GET,POST,DELETE,PATCH,OPTIONS");
             filterChain.doFilter(servletRequest, servletResponse);
         }
 

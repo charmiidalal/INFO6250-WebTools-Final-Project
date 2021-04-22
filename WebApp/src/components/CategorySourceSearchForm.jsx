@@ -35,7 +35,7 @@ const CategorySourceSearch = ({ onCategorySourceSearch, news }) => {
     e.preventDefault();
     if (country || source) {
       onCategorySourceSearch(
-        `top-headlines?country=${country}&category=${category}&sources=${source}&q=${searchQuery}`
+        `newsAll.htm?country=${country}&category=${category}&source=${source}&q=${searchQuery}`
       );
     }
   };

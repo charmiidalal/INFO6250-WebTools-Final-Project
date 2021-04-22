@@ -30,7 +30,8 @@ const Home = ({ setTopNews, news, clearTopNews }) => {
 
 
     if(!categorySourceUrl) {
-      let url1 = `http://newsapi.org/v2/everything?q=usa&sortBy=publishedAt&apiKey=4a0bee367c704198a2335c20c1b7b600`;
+      // let url1 = `http://newsapi.org/v2/everything?q=usa&sortBy=publishedAt&apiKey=4a0bee367c704198a2335c20c1b7b600`;
+      let url1 = `http://localhost:8080/hw4/getAllNews.htm`;
       setTopNews(url1,page);
     }
 

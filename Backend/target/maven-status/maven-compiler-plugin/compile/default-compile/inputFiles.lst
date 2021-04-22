@@ -1,8 +1,12 @@
 /usr/local/var/www/tomcat/webapps/hw2/src/main/java/Helper/Email.java
 /usr/local/var/www/tomcat/webapps/hw2/src/main/java/com/me/conf/CORSConfig.java
 /usr/local/var/www/tomcat/webapps/hw2/src/main/java/Helper/CustomeTag.java
+/usr/local/var/www/tomcat/webapps/hw2/src/main/java/com/me/controller/getNews.java
 /usr/local/var/www/tomcat/webapps/hw2/src/main/java/com/me/controller/LoginController.java
+/usr/local/var/www/tomcat/webapps/hw2/src/main/java/com/me/pojo/Source.java
+/usr/local/var/www/tomcat/webapps/hw2/src/main/java/com/me/controller/PreferenceController.java
 /usr/local/var/www/tomcat/webapps/hw2/src/main/java/Helper/ApproveEmail.java
+/usr/local/var/www/tomcat/webapps/hw2/src/main/java/com/me/service/getNewsArticles.java
 /usr/local/var/www/tomcat/webapps/hw2/src/main/java/com/me/conf/WebConfig.java
 /usr/local/var/www/tomcat/webapps/hw2/src/main/java/com/me/controller/SignUpController.java
 /usr/local/var/www/tomcat/webapps/hw2/src/main/java/com/me/pojo/News.java
@@ -12,4 +16,6 @@
 /usr/local/var/www/tomcat/webapps/hw2/src/main/java/com/me/dao/UserDao.java
 /usr/local/var/www/tomcat/webapps/hw2/src/main/java/com/me/controller/ScrapNews.java
 /usr/local/var/www/tomcat/webapps/hw2/src/main/java/com/me/filter/CORSFilter.java
+/usr/local/var/www/tomcat/webapps/hw2/src/main/java/com/me/pojo/Articles.java
 /usr/local/var/www/tomcat/webapps/hw2/src/main/java/com/me/dao/NewsDao.java
+/usr/local/var/www/tomcat/webapps/hw2/src/main/java/com/me/pojo/Example.java

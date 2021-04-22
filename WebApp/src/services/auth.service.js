@@ -11,7 +11,6 @@ class AuthService {
         password
       })
       .then(response => { // saves jwt to local storage
-        debugger;
         if (response.data.accessToken) {
           localStorage.setItem("user", JSON.stringify(response.data));
         }

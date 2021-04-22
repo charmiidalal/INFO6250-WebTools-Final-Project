@@ -1,10 +1,14 @@
+com/me/pojo/Example.class
+com/me/pojo/Articles.class
 com/me/pojo/User.class
 Helper/Email.class
 com/me/conf/WebConfig.class
 Helper/ApproveEmail.class
 com/me/controller/ScrapNews.class
+com/me/service/getNewsArticles.class
 com/me/dao/NewsDao.class
 com/me/controller/LoginController.class
+com/me/pojo/Source.class
 com/me/filter/CORSFilter.class
 com/me/dao/UserDao.class
 com/me/controller/SignUpController.class
@@ -12,4 +16,6 @@ Helper/Validation.class
 com/me/pojo/News.class
 com/me/controller/NewsController.class
 com/me/conf/CORSConfig.class
+com/me/controller/PreferenceController.class
 Helper/CustomeTag.class
+com/me/controller/getNews.class

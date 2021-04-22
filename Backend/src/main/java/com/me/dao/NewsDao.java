@@ -6,10 +6,13 @@
 package com.me.dao;
 
 import com.me.pojo.News;
+import com.me.pojo.User;
+import java.util.ArrayList;
 import org.hibernate.HibernateError;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
 
 /**
  *
@@ -42,7 +45,25 @@ public class NewsDao {
     public void close() {
         getSession().close();
     }
-
+    
+     public ArrayList<News> getAllNewsList() {
+        ArrayList<News> newsList = null;
+        try {
+            beginTransaction();
+            Query q = getSession().createQuery("from News");
+            newsList = (ArrayList<News>) q.list();
+            if (newsList.isEmpty()) {
+                return null;
+            }
+            commit();
+        } catch (HibernateError e) {
+            rollback();
+        } finally {
+            close();
+        }
+        return newsList;
+    }
+     
     public void createNews(News news) {
         try {
             beginTransaction();

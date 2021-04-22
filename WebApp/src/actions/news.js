@@ -73,7 +73,7 @@ export const setNewsLoading = () => {
 export const getNewsSource = () => async dispatch => {
   dispatch(setSourceLoading());
   try {
-    const newsSource = await axios.get(`sources?apiKey=${newsApiKey}`);
+    const newsSource = await axios.get(`GetSourceList.htm`);
     if (newsSource) {
       dispatch({
         type: GET_NEWS_SOURCE,
@@ -97,7 +97,8 @@ export const setTopNews = (url, page) => async (dispatch, getState) => {
     }
     const { pageSize } = getState().news;
     const newsItems = await axios.get(
-      `${url}&apiKey=${newsApiKey}&page=${page}&pageSize=${pageSize}`
+      // `${url}&apiKey=${newsApiKey}&page=${page}&pageSize=${pageSize}`
+      `${url}`
     );
     if (newsItems) {
       dispatch({
