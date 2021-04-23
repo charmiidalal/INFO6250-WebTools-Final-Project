@@ -44,12 +44,12 @@ public class getNews {
             JSONObject o = new JSONObject();
             JSONObject source = new JSONObject();
             source.put("id", "null");
-            source.put("name",n.getSourceName());
+            source.put("name",n.getSource());
             o.put("source",source);
             o.put("author", n.getAuthor());
             o.put("title",n.getTitle());
             o.put("description",n.getDescription());
-            o.put("url",n.getUrlOther());
+            o.put("url",n.getUrl());
             o.put("urlToImage",n.getUrlToImage());
             o.put("publishedAt",n.getPublishedAt());
             o.put("content",n.getContent());

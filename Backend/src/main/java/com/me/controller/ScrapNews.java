@@ -106,9 +106,9 @@ public class ScrapNews {
             news.setDescription(description);
             news.setPublishedAt(publishedAt);
             news.setTitle(title);
-            news.setUrlOther(urlother);
+            news.setUrl(urlother);
             news.setUrlToImage(urlToImage);
-            news.setSourceName(name);
+            news.setSource(name);
             nd.createNews(news);
         }
         return new ResponseEntity<>("Success", headers, HttpStatus.OK);

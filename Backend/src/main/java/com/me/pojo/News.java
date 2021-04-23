@@ -11,6 +11,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.HashMap;
 import java.util.Map;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
  *
@@ -20,8 +23,8 @@ public class News {
     
     private int newsID;
     
-    @JsonProperty("sourceName")
-    private String sourceName;
+    @JsonProperty("source")
+    private String source;
 
     @JsonProperty("author")
     private String author;
@@ -32,8 +35,8 @@ public class News {
     @JsonProperty("description")
     private String description;
 
-    @JsonProperty("urlother")
-    private String urlother;
+    @JsonProperty("url")
+    private String url;
 
     @JsonProperty("urlToImage")
     private String urlToImage;
@@ -55,20 +58,20 @@ public class News {
         this.newsID = newsID;
     }
 
-    public String getSourceName() {
-        return sourceName;
+    public String getSource() {
+        return source;
     }
 
-    public void setSourceName(String sourceName) {
-        this.sourceName = sourceName;
-    }
-    
-    public String getUrlother() {
-        return urlother;
+    public void setSource(String source) {
+        this.source = source;
     }
 
-    public void setUrlother(String urlother) {
-        this.urlother = urlother;
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public String getAuthor() {
@@ -94,15 +97,7 @@ public class News {
     public void setDescription(String description) {
         this.description = description;
     }
-
-    public String getUrlOther() {
-        return urlother;
-    }
-
-    public void setUrlOther(String urlother) {
-        this.urlother = urlother;
-    }
-
+    
     public String getUrlToImage() {
         return urlToImage;
     }

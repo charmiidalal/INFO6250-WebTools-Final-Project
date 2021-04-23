@@ -8,7 +8,6 @@ package com.me.controller;
 import Helper.Validation;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.Gson;
 import com.me.dao.UserDao;
 import com.me.pojo.User;
 import java.util.HashMap;
@@ -23,6 +22,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
@@ -36,7 +36,7 @@ public class SignUpController {
     @RequestMapping(value = "/signup.htm", method = RequestMethod.OPTIONS)
     public void corsHeaders(HttpServletResponse response) {
         response.addHeader("Access-Control-Allow-Origin", "http://localhost:8081");
-                response.addHeader("Access-Control-Allow-Methods","GET,PUT,POST,DELETE,OPTIONS");
+        response.addHeader("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS");
 
     }
 
@@ -68,5 +68,21 @@ public class SignUpController {
         }
         userDao.createUser(username, password, "user", email);
         return new ResponseEntity<>("{ \"message\": \"User was registered successfully!\" }", headers, HttpStatus.OK);
+    }
+
+    @CrossOrigin(origins = "**", allowedHeaders = "*")
+    @RequestMapping(value = "/DeleteUser.htm", method = RequestMethod.POST)
+    public ResponseEntity<String> DeleteUser(@RequestParam String username, HttpServletRequest request, HttpServletResponse response) throws JsonProcessingException {
+        UserDao ad = new UserDao();
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Custom-Header", "foo");
+        User uap = ad.getUser(username);
+        if (uap != null) {
+            ad.deleteUser(uap);
+            return new ResponseEntity<>("Success", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(
+                    "Unauthorized", headers, HttpStatus.UNAUTHORIZED);
+        }
     }
 }

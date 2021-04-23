@@ -8,8 +8,9 @@ and open the template in the editor.
 
 <hibernate-mapping>
     <class name="com.me.pojo.News" table="news">
-        <id name="newsID" type="int">
+        <id name="newsID" type="java.lang.Integer">
             <column name="newsID"/>
+            <generator class="identity"></generator>
         </id>
         <property name="urlToImage" type="java.lang.String">
             <column name="urlToImage"/>
@@ -26,14 +27,14 @@ and open the template in the editor.
         <property name="description" type="java.lang.String">
             <column name="description"></column>
         </property>
-        <property name="urlother" type="java.lang.String">
-            <column name="urlother"></column>
+        <property name="url" type="java.lang.String">
+            <column name="url"></column>
         </property>
-         <property name="publishedAt" type="java.lang.String">
+        <property name="publishedAt" type="java.lang.String">
             <column name="publishedAt"></column>
         </property>
-         <property name="sourceName" type="java.lang.String">
-            <column name="sourceName"></column>
+        <property name="source" type="java.lang.String">
+            <column name="source"></column>
         </property>
     </class>
 </hibernate-mapping>

@@ -92,8 +92,9 @@ public class UserDao {
             user.setUsername(username);
             user.setPassword(password);
             user.setBookmarks("");
-            user.setCategories("");
-            user.setCountries("");
+            user.setCategories("Business,Entertainment,General,Health,Science,Sports,Technology");
+            user.setCountries("United States of America,United Kingdom,Canada,China,Russia,France," +
+            "Philippines,United Arab Emirates,Australia,Argentina,South Korea,Indonesia");
             getSession().save(user);
             commit();
         } catch (HibernateError e) {
@@ -108,6 +109,19 @@ public class UserDao {
         try {
             beginTransaction();
             getSession().update(user);
+            commit();
+        } catch (HibernateError e) {
+            rollback();
+        } finally {
+            close();
+        }
+        return true;
+    }
+    
+    public boolean deleteUser(User user) {
+        try {
+            beginTransaction();
+            getSession().delete(user);
             commit();
         } catch (HibernateError e) {
             rollback();

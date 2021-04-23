@@ -45,8 +45,8 @@ public class NewsDao {
     public void close() {
         getSession().close();
     }
-    
-     public ArrayList<News> getAllNewsList() {
+
+    public ArrayList<News> getAllNewsList() {
         ArrayList<News> newsList = null;
         try {
             beginTransaction();
@@ -63,11 +63,11 @@ public class NewsDao {
         }
         return newsList;
     }
-     
+
     public void createNews(News news) {
         try {
             beginTransaction();
-            getSession().save(news);
+            getSession().saveOrUpdate(news);
             commit();
         } catch (HibernateError e) {
             rollback();

@@ -41,7 +41,7 @@ public class LoginController {
             String resultusername = uap.getUsername();
             String resultEmail = uap.getEmail();
             if (username.equals(resultusername) && password.equals(resultpassword)) {
-                return new ResponseEntity<>("{\"id\":\""+uap.getId()+"\",\"username\":\""
+                return new ResponseEntity<>("{\"role\":\""+uap.getRole()+"\",\"id\":\""+uap.getId()+"\",\"username\":\""
                         +uap.getUsername()+"\",\"email\":\""+uap.getEmail()+"\",\"accessToken\":\""
                         +getJwt(username, resultEmail)+""
                                 + "\"}", headers, HttpStatus.OK);
