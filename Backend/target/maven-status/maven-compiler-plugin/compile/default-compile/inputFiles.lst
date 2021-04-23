@@ -1,14 +1,15 @@
 /usr/local/var/www/tomcat/webapps/hw2/src/main/java/Helper/Email.java
 /usr/local/var/www/tomcat/webapps/hw2/src/main/java/com/me/conf/CORSConfig.java
 /usr/local/var/www/tomcat/webapps/hw2/src/main/java/Helper/CustomeTag.java
-/usr/local/var/www/tomcat/webapps/hw2/src/main/java/com/me/controller/getNews.java
 /usr/local/var/www/tomcat/webapps/hw2/src/main/java/com/me/controller/LoginController.java
 /usr/local/var/www/tomcat/webapps/hw2/src/main/java/com/me/pojo/Source.java
 /usr/local/var/www/tomcat/webapps/hw2/src/main/java/com/me/controller/PreferenceController.java
 /usr/local/var/www/tomcat/webapps/hw2/src/main/java/Helper/ApproveEmail.java
+/usr/local/var/www/tomcat/webapps/hw2/src/main/java/com/me/controller/WeatherController.java
 /usr/local/var/www/tomcat/webapps/hw2/src/main/java/com/me/service/getNewsArticles.java
 /usr/local/var/www/tomcat/webapps/hw2/src/main/java/com/me/conf/WebConfig.java
 /usr/local/var/www/tomcat/webapps/hw2/src/main/java/com/me/controller/SignUpController.java
+/usr/local/var/www/tomcat/webapps/hw2/src/main/java/com/me/controller/StockController.java
 /usr/local/var/www/tomcat/webapps/hw2/src/main/java/com/me/pojo/News.java
 /usr/local/var/www/tomcat/webapps/hw2/src/main/java/Helper/Validation.java
 /usr/local/var/www/tomcat/webapps/hw2/src/main/java/com/me/controller/NewsController.java

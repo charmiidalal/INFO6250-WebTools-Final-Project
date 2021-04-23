@@ -11,15 +11,6 @@ import {
   CLEAR_TOP_NEWS
 } from './types';
 
-let newsApiKey;
-
-//newsApi key
-if (process.env.NODE_ENV !== 'production') {
-  newsApiKey = "4a0bee367c704198a2335c20c1b7b600";
-} else {
-  newsApiKey = "4a0bee367c704198a2335c20c1b7b600";
-}
-
 // Set Theme
 export const setTheme = () => {
   let localTheme = localStorage.getItem('theme');
@@ -95,7 +86,7 @@ export const setTopNews = (url, page) => async (dispatch, getState) => {
     if (page === 1) {
       dispatch({ type: CLEAR_TOP_NEWS });
     }
-    const { pageSize } = getState().news;
+   // const { pageSize } = getState().news;
     const newsItems = await axios.get(
       // `${url}&apiKey=${newsApiKey}&page=${page}&pageSize=${pageSize}`
       `${url}`

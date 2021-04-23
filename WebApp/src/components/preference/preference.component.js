@@ -74,7 +74,7 @@ export default class Login extends Component {
     var catagory = document.getElementsByClassName("catagory");
     for (var i = 0; i < catagory.length; i++) {
       if (catagory.item(i).checked) {
-        catlist.push(catagory.item(i).getAttribute("catName"));
+        catlist.push(catagory.item(i).getAttribute("catname"));
       }
     }
     // saves new user countries checked
@@ -82,7 +82,7 @@ export default class Login extends Component {
     var country = document.getElementsByClassName("country");
     for (var j = 0; j < country.length; j++) {
       if (country.item(j).checked) {
-        countryList.push(country.item(j).getAttribute("cntrName"));
+        countryList.push(country.item(j).getAttribute("cntrname"));
       }
     }
     // updates user preferences
@@ -106,42 +106,42 @@ export default class Login extends Component {
             onSubmit={this.handleSave}
             ref={c => {
               this.form = c;
-            }} class="loginForm1"
+            }} className="loginForm1"
           >
             <div className="form-group prefMainDiv">
               <div className="prefHead"><h3>Catagory Preference List</h3></div>
 
-              <div class="checkSection">
+              <div className="checkSection">
 
-                <div class="checkboxClass"><input type="checkbox" name="Business" catName="Business" class="catagory" onChange={this.handleInputChange} checked={this.handleCheck("Business")} /> <label>Business</label></div>
-                <div class="checkboxClass"><input type="checkbox" name="Entertainment" catName="Entertainment" class="catagory" onChange={this.handleInputChange} checked={this.handleCheck("Entertainment")} /> <label>Entertainment</label></div>
-                <div class="checkboxClass"><input type="checkbox" name="General" catName="General" class="catagory" onChange={this.handleInputChange} checked={this.handleCheck("General")} /> <label>General</label></div>
-                <div class="checkboxClass"><input type="checkbox" name="Health" catName="Health" class="catagory" onChange={this.handleInputChange} checked={this.handleCheck("Health")} /> <label>Health</label></div>
+                <div className="checkboxClass"><input type="checkbox" name="Business" catname="Business" className="catagory" onChange={this.handleInputChange} checked={this.handleCheck("Business")} /> <label>Business</label></div>
+                <div className="checkboxClass"><input type="checkbox" name="Entertainment" catname="Entertainment" className="catagory" onChange={this.handleInputChange} checked={this.handleCheck("Entertainment")} /> <label>Entertainment</label></div>
+                <div className="checkboxClass"><input type="checkbox" name="General" catname="General" className="catagory" onChange={this.handleInputChange} checked={this.handleCheck("General")} /> <label>General</label></div>
+                <div className="checkboxClass"><input type="checkbox" name="Health" catname="Health" className="catagory" onChange={this.handleInputChange} checked={this.handleCheck("Health")} /> <label>Health</label></div>
 
-                <div class="checkboxClass"><input type="checkbox" name="Science" catName="Science" class="catagory" onChange={this.handleInputChange} checked={this.handleCheck("Science")} /> <label>Science</label></div>
-                <div class="checkboxClass"><input type="checkbox" name="Sports" catName="Sports" class="catagory" onChange={this.handleInputChange} checked={this.handleCheck("Sports")} /> <label>Sports</label></div>
-                <div class="checkboxClass"><input type="checkbox" name="Technology" catName="Technology" class="catagory" onChange={this.handleInputChange} checked={this.handleCheck("Technology")} /> <label>Technology</label></div>
+                <div className="checkboxClass"><input type="checkbox" name="Science" catname="Science" className="catagory" onChange={this.handleInputChange} checked={this.handleCheck("Science")} /> <label>Science</label></div>
+                <div className="checkboxClass"><input type="checkbox" name="Sports" catname="Sports" className="catagory" onChange={this.handleInputChange} checked={this.handleCheck("Sports")} /> <label>Sports</label></div>
+                <div className="checkboxClass"><input type="checkbox" name="Technology" catname="Technology" className="catagory" onChange={this.handleInputChange} checked={this.handleCheck("Technology")} /> <label>Technology</label></div>
               </div>
 
             </div>
             <div className="form-group prefMainDiv">
               <div className="prefHead"><h3>Country Preference List</h3></div>
               <div>
-                <div class="checkSection">
-                  <div class="checkboxClass"><input type="checkbox" onChange={this.handleCntrInputChange} checked={this.handleCntrCheck("United States of America")} name="United States of America" cntrName="United States of America" class="country" /> <label>United States of America</label></div>
-                  <div class="checkboxClass"><input type="checkbox" onChange={this.handleCntrInputChange} checked={this.handleCntrCheck("United Kingdom")} name="United Kingdom" cntrName="United Kingdom" class="country" /> <label>United Kingdom</label></div>
-                  <div class="checkboxClass"><input type="checkbox" onChange={this.handleCntrInputChange} checked={this.handleCntrCheck("Canada")} name="Canada" cntrName="Canada" class="country" /> <label>Canada</label></div>
-                  <div class="checkboxClass"> <input type="checkbox" onChange={this.handleCntrInputChange} checked={this.handleCntrCheck("China")} name="China" cntrName="China" class="country" /> <label>China</label></div>
-                  <div class="checkboxClass"> <input type="checkbox" onChange={this.handleCntrInputChange} checked={this.handleCntrCheck("Russia")} name="Russia" cntrName="Russia" class="country" /> <label>Russia</label></div>
-                  <div class="checkboxClass"> <input type="checkbox" onChange={this.handleCntrInputChange} checked={this.handleCntrCheck("France")} name="France" cntrName="France" class="country" /> <label>France</label></div>
+                <div className="checkSection">
+                  <div className="checkboxClass"><input type="checkbox" onChange={this.handleCntrInputChange} checked={this.handleCntrCheck("United States of America")} name="United States of America" cntrname="United States of America" className="country" /> <label>United States of America</label></div>
+                  <div className="checkboxClass"><input type="checkbox" onChange={this.handleCntrInputChange} checked={this.handleCntrCheck("United Kingdom")} name="United Kingdom" cntrname="United Kingdom" className="country" /> <label>United Kingdom</label></div>
+                  <div className="checkboxClass"><input type="checkbox" onChange={this.handleCntrInputChange} checked={this.handleCntrCheck("Canada")} name="Canada" cntrname="Canada" className="country" /> <label>Canada</label></div>
+                  <div className="checkboxClass"> <input type="checkbox" onChange={this.handleCntrInputChange} checked={this.handleCntrCheck("China")} name="China" cntrname="China" className="country" /> <label>China</label></div>
+                  <div className="checkboxClass"> <input type="checkbox" onChange={this.handleCntrInputChange} checked={this.handleCntrCheck("Russia")} name="Russia" cntrname="Russia" className="country" /> <label>Russia</label></div>
+                  <div className="checkboxClass"> <input type="checkbox" onChange={this.handleCntrInputChange} checked={this.handleCntrCheck("France")} name="France" cntrname="France" className="country" /> <label>France</label></div>
                 </div>
-                <div class="checkSection">
-                  <div class="checkboxClass"> <input type="checkbox" onChange={this.handleCntrInputChange} checked={this.handleCntrCheck("Philippines")} name="Philippines" cntrName="Philippines" class="country" /> <label>Philippines</label></div>
-                  <div class="checkboxClass"> <input type="checkbox" onChange={this.handleCntrInputChange} checked={this.handleCntrCheck("United Arab Emirates")} name="United Arab Emirates" cntrName="United Arab Emirates" class="country" /> <label>United Arab Emirates</label></div>
-                  <div class="checkboxClass"><input type="checkbox" onChange={this.handleCntrInputChange} checked={this.handleCntrCheck("Australia")} name="Australia" cntrName="Australia" class="country" /> <label>Australia</label> </div>
-                  <div class="checkboxClass"><input type="checkbox" onChange={this.handleCntrInputChange} checked={this.handleCntrCheck("Argentina")} name="Argentina" cntrName="Argentina" class="country" /> <label>Argentina</label></div>
-                  <div class="checkboxClass"> <input type="checkbox" onChange={this.handleCntrInputChange} checked={this.handleCntrCheck("South Korea")} name="South Korea" cntrName="South Korea" class="country" /> <label>South Korea</label></div>
-                  <div class="checkboxClass"><input type="checkbox" onChange={this.handleCntrInputChange} checked={this.handleCntrCheck("Indonesia")} name="Indonesia" cntrName="Indonesia" class="country" /> <label>Indonesia</label></div>
+                <div className="checkSection">
+                  <div className="checkboxClass"> <input type="checkbox" onChange={this.handleCntrInputChange} checked={this.handleCntrCheck("Philippines")} name="Philippines" cntrname="Philippines" className="country" /> <label>Philippines</label></div>
+                  <div className="checkboxClass"> <input type="checkbox" onChange={this.handleCntrInputChange} checked={this.handleCntrCheck("United Arab Emirates")} name="United Arab Emirates" cntrname="United Arab Emirates" className="country" /> <label>United Arab Emirates</label></div>
+                  <div className="checkboxClass"><input type="checkbox" onChange={this.handleCntrInputChange} checked={this.handleCntrCheck("Australia")} name="Australia" cntrname="Australia" className="country" /> <label>Australia</label> </div>
+                  <div className="checkboxClass"><input type="checkbox" onChange={this.handleCntrInputChange} checked={this.handleCntrCheck("Argentina")} name="Argentina" cntrname="Argentina" className="country" /> <label>Argentina</label></div>
+                  <div className="checkboxClass"> <input type="checkbox" onChange={this.handleCntrInputChange} checked={this.handleCntrCheck("South Korea")} name="South Korea" cntrname="South Korea" className="country" /> <label>South Korea</label></div>
+                  <div className="checkboxClass"><input type="checkbox" onChange={this.handleCntrInputChange} checked={this.handleCntrCheck("Indonesia")} name="Indonesia" cntrname="Indonesia" className="country" /> <label>Indonesia</label></div>
                 </div>
               </div>
               <div className="form-group newsButtons">

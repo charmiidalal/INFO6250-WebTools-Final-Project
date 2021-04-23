@@ -18,8 +18,8 @@ async function createNews(task) {
 }
 
 async function deleteNews(id) {
-  return fetch(API_URL + id, {
-    method: 'delete'
+  return fetch(API_URL+"DeleteNewsByAuthor.htm?username="+JSON.parse(localStorage.getItem('user')).username+"&newsID="+id, {
+    method: 'POST'
   }).then(response =>
     response.json().then(json => {
       return json;
@@ -45,9 +45,14 @@ async function updateNews(id, payload) {
 }
 
 async function getAllNews() {
-  const response = await fetch(API_URL);
+  const response = await fetch(API_URL+"GetNewsByAuthor.htm?username="+JSON.parse(localStorage.getItem('user')).username);
   const jsonData = await response.json();
   return jsonData;
 }
 
-export default { createNews, deleteNews, updateNews, getAllNews }
+async function scrapNews(page) {
+  const response = await fetch(API_URL+"scrap.htm?page="+page);
+  return response;
+}
+
+export default { createNews, deleteNews, updateNews, getAllNews, scrapNews }

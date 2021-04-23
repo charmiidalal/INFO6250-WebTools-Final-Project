@@ -62,7 +62,7 @@ export default class Login extends Component {
     if (this.checkBtn.context._errors.length === 0) {
       AuthService.login(this.state.username, this.state.password).then(
         () => {
-          debugger;
+         
           fetch("http://localhost:8080/hw4/GetPreferences.htm?username=" + JSON.parse(localStorage.getItem("user")).username).then((results) => { return results.json() }).then((results) => localStorage.setItem("userCat",results.categories))
           fetch("http://localhost:8080/hw4/GetPreferences.htm?username=" + JSON.parse(localStorage.getItem("user")).username).then((results) => { return results.json() }).then((results) => localStorage.setItem("userCntry",results.countries))
           fetch("http://localhost:8080/hw4/GetPreferences.htm?username=" + JSON.parse(localStorage.getItem("user")).username).then((results) => { return results.json() }).then((results) => localStorage.setItem("bookmarks",results.bookmarks))
@@ -71,6 +71,7 @@ export default class Login extends Component {
           window.location.reload();
         },
         error => {
+          debugger;
           const resMessage =
             (error.response &&
               error.response.data &&
@@ -89,9 +90,6 @@ export default class Login extends Component {
         loading: false
       });
     }
-
-
-    
   }
 
   render() {
@@ -108,7 +106,7 @@ export default class Login extends Component {
             onSubmit={this.handleLogin}
             ref={c => {
               this.form = c;
-            }} class="loginForm"
+            }} className="loginForm"
           >
             <div className="form-group">
               <label htmlFor="username">Username</label>

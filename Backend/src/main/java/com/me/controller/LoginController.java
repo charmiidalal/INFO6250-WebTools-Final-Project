@@ -38,20 +38,19 @@ public class LoginController {
         User uap = ad.getUser(username);
         if (uap != null) {
             String resultpassword = uap.getPassword();
-            String resultusername = uap.getUsername();
             String resultEmail = uap.getEmail();
-            if (username.equals(resultusername) && password.equals(resultpassword)) {
-                return new ResponseEntity<>("{\"role\":\""+uap.getRole()+"\",\"id\":\""+uap.getId()+"\",\"username\":\""
-                        +uap.getUsername()+"\",\"email\":\""+uap.getEmail()+"\",\"accessToken\":\""
-                        +getJwt(username, resultEmail)+""
-                                + "\"}", headers, HttpStatus.OK);
+            if (password.equals(resultpassword)) {
+                return new ResponseEntity<>("{\"role\":\"" + uap.getRole() + "\",\"id\":\"" + uap.getId() + "\",\"username\":\""
+                        + uap.getUsername() + "\",\"email\":\"" + uap.getEmail() + "\",\"accessToken\":\""
+                        + getJwt(username, resultEmail) + ""
+                        + "\"}", headers, HttpStatus.OK);
             } else {
                 return new ResponseEntity<>(
-                        "Unauthorized", headers, HttpStatus.UNAUTHORIZED);
+                        "{ \"message\" : \"Incorrect Password!\"}", headers, HttpStatus.UNAUTHORIZED);
             }
         } else {
             return new ResponseEntity<>(
-                    "Unauthorized", headers, HttpStatus.UNAUTHORIZED);
+                    "{\"message\": \"User not found!\"}", headers, HttpStatus.NOT_FOUND);
         }
     }
 

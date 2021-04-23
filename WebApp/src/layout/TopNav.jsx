@@ -58,7 +58,7 @@ const TopNav = ({ news, changeTheme }) => {
               <Nav.Link activeClassName='active' as={NavLink} to='/preference'>
                 Settings
             </Nav.Link> : ""}
-            {localStorage.getItem('user') && JSON.parse(localStorage.getItem('user')).role == "admin" ? 
+            {localStorage.getItem('user') && JSON.parse(localStorage.getItem('user')).role === "admin" ? 
              <Nav.Link activeClassName='active' as={NavLink} to='/createNews'>
                 Post News
             </Nav.Link> : ""}

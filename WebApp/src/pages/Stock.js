@@ -24,8 +24,7 @@ export default class Stock extends React.Component {
   fetchStock() {
     const pointerToThis = this;
     const API_KEY = "SLIIE11N2DCT0QUM";
-    //let StockSymbol = "AMZN";
-    let API_Call = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${this.state.stockSymbol}&outputsize=compact&apikey=${API_KEY}`;
+    let API_Call = `http://localhost:8080/hw4/getStockDetail.htm?stockName=${this.state.stockSymbol}`;
     let stockChartXValuesFunction = [];
     let stockChartYValuesFunction = [];
     fetch(API_Call)

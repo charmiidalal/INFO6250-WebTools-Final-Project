@@ -23,6 +23,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 
 /**
@@ -35,10 +36,10 @@ public class ScrapNews {
 
     @CrossOrigin(origins = "**", allowedHeaders = "*")
     @RequestMapping(value = "/scrap.htm", method = RequestMethod.GET)
-    public ResponseEntity<String> runScrapNews(HttpServletRequest request, HttpServletResponse response) throws JsonProcessingException, ProtocolException, MalformedURLException, IOException, JSONException {
+    public ResponseEntity<String> runScrapNews(@RequestParam String page,HttpServletRequest request, HttpServletResponse response) throws JsonProcessingException, ProtocolException, MalformedURLException, IOException, JSONException {
         HttpHeaders headers = new HttpHeaders();
         headers.add("Custom-Header", "foo");
-        String urlString = "http://newsapi.org/v2/everything?q=usa&pageSize=100&sortBy=publishedAt&apiKey=4a0bee367c704198a2335c20c1b7b600";
+        String urlString = "http://newsapi.org/v2/everything?q=usa&pageSize=20&sortBy=publishedAt&apiKey=4a0bee367c704198a2335c20c1b7b600&page="+page;
 
         RestTemplate restTemplate = new RestTemplate();
         String result = restTemplate.getForObject(urlString, String.class);

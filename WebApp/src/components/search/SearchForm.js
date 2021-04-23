@@ -33,8 +33,7 @@ class SearchForm extends Component {
     try {
       if (this.state.coordinates) {
         const res = await axios.get(
-          `https://api.openweathermap.org/data/2.5/forecast?lat=${coordinates.latitude
-          }&lon=${coordinates.longitude}&appid=7ec4719c8fca5b9800a651e5991ca88d`
+          `http://localhost:8080/hw4/WeatherByLocation.htm?lat=${coordinates.latitude}&lon=${coordinates.longitude}`
         );
 
         dispatch({ type: 'UPDATE_LOCATION', payload: res.data });
@@ -46,7 +45,7 @@ class SearchForm extends Component {
       } else {
         // Get request using user input
         const res = await axios.get(
-          `https://api.openweathermap.org/data/2.5/forecast?zip=${zipcode}&appid=7ec4719c8fca5b9800a651e5991ca88d`
+          `http://localhost:8080/hw4/WeatherByZipcode.htm?zipcode=${zipcode}`
         );
 
         dispatch({ type: 'UPDATE_LOCATION', payload: res.data });
@@ -78,7 +77,6 @@ class SearchForm extends Component {
     const error = () => {
       dispatch({ type: 'ERROR', payload: 'Geolocation must be enabled' });
     };
-
     // Check if geolocation is enabled
     if (!navigator.geolocation) {
       dispatch({ type: 'ERROR', payload: 'Geolocation must be enabled' });

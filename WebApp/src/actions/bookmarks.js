@@ -3,11 +3,9 @@ import axios from "axios";
 // This function bookmarks the item and stores in database
 // gets state of bookmark items
 export const bookmarkItem = item => (dispatch, getState) => {
-  debugger;
   const { bookmarkItems } = getState().bookmarks;
   localStorage.setItem('bookmarks', JSON.stringify([item, ...bookmarkItems]));
   if (JSON.parse(localStorage.getItem("user") != null)) { // if no user logged in
-    debugger;
     axios.post("http://localhost:8080/hw4/UpdateBookmarks.htm", { "username": JSON.parse(localStorage.getItem("user")).username, "bookmarks": JSON.stringify([item, ...bookmarkItems]) })
   }
   dispatch({
@@ -20,11 +18,11 @@ export const bookmarkItem = item => (dispatch, getState) => {
 export const unBookmarkItem = item => (dispatch, getState) => {
   const { bookmarkItems } = getState().bookmarks;
   const newBookmarkItems = bookmarkItems.filter(
-    bookmarkItem => bookmarkItem !== item
+    bookmarkItem => bookmarkItem.newsID !== item.newsID || bookmarkItem !== item
   );
   localStorage.setItem('bookmarks', JSON.stringify(newBookmarkItems));
   if (JSON.parse(localStorage.getItem("user") != null)) { // changes bookmarked items
-    axios.post("http://localhost:8080/hw4/UpdateBookmarks.htm", { "id": JSON.parse(localStorage.getItem("user")).id, "bookmarks": JSON.stringify(newBookmarkItems) })
+    axios.post("http://localhost:8080/hw4/UpdateBookmarks.htm", { "username": JSON.parse(localStorage.getItem("user")).username, "bookmarks": JSON.stringify(newBookmarkItems) })
   }
   dispatch({
     type: UNBOOKMARK_ITEM,
@@ -33,7 +31,6 @@ export const unBookmarkItem = item => (dispatch, getState) => {
 };
 // This function gets all items that rae bookmarked and stores in database
 export const getBookmarkItems = () => {
-  debugger;
   let bookmarkItems = localStorage.getItem('bookmarks');
   if (bookmarkItems === null || bookmarkItems === "") {
     bookmarkItems = [];

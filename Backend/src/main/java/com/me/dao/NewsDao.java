@@ -64,6 +64,24 @@ public class NewsDao {
         return newsList;
     }
 
+    public ArrayList<News> getNewsByAuthor(String username) {
+        ArrayList<News> newsList = null;
+        try {
+            beginTransaction();
+            Query q = getSession().createQuery("from News where author = '" + username + "'");
+            newsList = (ArrayList<News>) q.list();
+            if (newsList.isEmpty()) {
+                return null;
+            }
+            commit();
+        } catch (HibernateError e) {
+            rollback();
+        } finally {
+            close();
+        }
+        return newsList;
+    }
+
     public void createNews(News news) {
         try {
             beginTransaction();
@@ -75,4 +93,36 @@ public class NewsDao {
             close();
         }
     }
+
+    public void deleteNewsByID(News news) {
+        try {
+            beginTransaction();
+            getSession().delete(news);
+            commit();
+        } catch (HibernateError e) {
+            rollback();
+        } finally {
+            close();
+        }
+    }
+    
+    public News getNews(int newsID) {
+        News news = null;
+        try {
+            beginTransaction();
+            Query q = getSession().createQuery("from News where newsID = '" + newsID + "'");
+            ArrayList<News> newsList = (ArrayList<News>) q.list();
+            if (newsList.isEmpty()) {
+                return null;
+            }
+            news = newsList.get(0);
+            commit();
+        } catch (HibernateError e) {
+            rollback();
+        } finally {
+            close();
+        }
+        return news;
+    }
+
 }

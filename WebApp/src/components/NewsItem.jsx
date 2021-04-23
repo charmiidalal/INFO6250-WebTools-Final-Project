@@ -100,18 +100,18 @@ const NewsItem = ({
             <br>
             </br>
             < FacebookShareButton url={item.url}> 
-              <FacebookIcon logoFillColor="white" size ={33} round/>
+              <FacebookIcon logofillcolor="white" size ={33} round/>
                 </FacebookShareButton>
                 < TwitterShareButton url={item.url}>
-              <TwitterIcon logoFillColor="white" size ={33} round />
+              <TwitterIcon logofillcolor="white" size ={33} round />
                 </TwitterShareButton>
                 < RedditShareButton url={item.url}>
-              <RedditIcon logoFillColor="white" size ={33} round/>
+              <RedditIcon logofillcolor="white" size ={33} round/>
                 </ RedditShareButton>
                 
                 
                 < EmailShareButton url={item.url}>
-              <EmailIcon logoFillColor="white" size ={33} round/>
+              <EmailIcon logofillcolor="white" size ={33} round/>
                 </ EmailShareButton>
           </small>
         </Card.Footer>
