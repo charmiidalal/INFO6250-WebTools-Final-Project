@@ -1,4 +1,4 @@
 import axios from 'axios';
 export default axios.create({
-  baseURL: 'http://localhost:8080/hw4/'
+  baseURL: 'http://localhost:8080/HuskyTimes/'
 });

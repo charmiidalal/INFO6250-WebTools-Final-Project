@@ -18,12 +18,13 @@ import org.springframework.web.client.RestTemplate;
 
 /**
  *
- * @author manushpatel
+ * @author charmidalal
  */
 @CrossOrigin(origins = "**", allowedHeaders = "*")
 @Controller
 public class StockController {
     
+    /* Hits stock api with the company keyword & returns stock graph */
     @CrossOrigin(origins = "**", allowedHeaders = "*")
     @RequestMapping(value = "/getStockDetail.htm", method = RequestMethod.GET)
     public ResponseEntity<String> getStockDetail(@RequestParam String stockName) throws JSONException {

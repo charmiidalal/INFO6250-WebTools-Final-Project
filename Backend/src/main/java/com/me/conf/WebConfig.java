@@ -12,14 +12,14 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 /**
  *
- * @author manushpatel
+ * @author charmidalal
  */
 @Configuration
 @EnableWebMvc
 public class WebConfig extends WebMvcConfigurerAdapter {
 
-  @Override
-  public void addCorsMappings(CorsRegistry registry) {
-    registry.addMapping("/**").allowedOrigins("*").allowedHeaders("*").allowedMethods("PUT","POST","GET","DELETE","HEAD","OPTIONS");
-  }
-} 
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**").allowedOrigins("*").allowedHeaders("*").allowedMethods("PUT", "POST", "GET", "DELETE", "HEAD", "OPTIONS");
+    }
+}

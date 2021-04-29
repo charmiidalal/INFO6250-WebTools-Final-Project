@@ -26,10 +26,11 @@ const NewsItem = ({
   facebook
 }) => {
   // if item is bookmarked find bookmark title
-  const isBookmark = item => {              // finds the title of the news
+  const isBookmark = item => {   
+    // finds the title of the news
     if (bookmarkItems !== null) {
       return (
-        bookmarkItems.findIndex(bookmark => bookmark.title === item.title) > -1
+        bookmarkItems.findIndex(bookmark => bookmark.newsID === item.newsID) > -1
       );
     }
   };

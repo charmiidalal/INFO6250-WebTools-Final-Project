@@ -61,17 +61,14 @@ export default class Login extends Component {
     // verifies if form validation is successful or not
     if (this.checkBtn.context._errors.length === 0) {
       AuthService.login(this.state.username, this.state.password).then(
-        () => {
-         
-          fetch("http://localhost:8080/hw4/GetPreferences.htm?username=" + JSON.parse(localStorage.getItem("user")).username).then((results) => { return results.json() }).then((results) => localStorage.setItem("userCat",results.categories))
-          fetch("http://localhost:8080/hw4/GetPreferences.htm?username=" + JSON.parse(localStorage.getItem("user")).username).then((results) => { return results.json() }).then((results) => localStorage.setItem("userCntry",results.countries))
-          fetch("http://localhost:8080/hw4/GetPreferences.htm?username=" + JSON.parse(localStorage.getItem("user")).username).then((results) => { return results.json() }).then((results) => localStorage.setItem("bookmarks",results.bookmarks))
+        async () => {
+          await fetch("http://localhost:8080/HuskyTimes/GetPreferences.htm?username=" + JSON.parse(localStorage.getItem("user")).username).then((results) => { return results.json() }).then((results) => localStorage.setItem("userCat", results.categories))
+          await fetch("http://localhost:8080/HuskyTimes/GetPreferences.htm?username=" + JSON.parse(localStorage.getItem("user")).username).then((results) => { return results.json() }).then((results) => localStorage.setItem("userCntry", results.countries))
+          await fetch("http://localhost:8080/HuskyTimes/GetPreferences.htm?username=" + JSON.parse(localStorage.getItem("user")).username).then((results) => { return results.json() }).then((results) => localStorage.setItem("bookmarks", results.bookmarks))
           this.props.history.push("/");
-
           window.location.reload();
         },
         error => {
-          debugger;
           const resMessage =
             (error.response &&
               error.response.data &&
@@ -97,66 +94,66 @@ export default class Login extends Component {
       <div className="loginPage">
         <div className="card card-container loginCompo">
           <div className="innerFormLogin">
-          <img
-            src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-512.png"
-            alt="profile-img"
-            className="profile-img-card"
-          />
-          <Form
-            onSubmit={this.handleLogin}
-            ref={c => {
-              this.form = c;
-            }} className="loginForm"
-          >
-            <div className="form-group">
-              <label htmlFor="username">Username</label>
-              <Input
-                type="text"
-                className="form-control"
-                name="username"
-                value={this.state.username}
-                onChange={this.onChangeUsername}
-                validations={[required]}
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="password">Password</label>
-              <Input
-                type="password"
-                className="form-control"
-                name="password"
-                value={this.state.password}
-                onChange={this.onChangePassword}
-                validations={[required]}
-              />
-            </div>
-
-            <div className="form-group loginButtons">
-              <button
-                className="btn btn-primary btn-block"
-                disabled={this.state.loading}
-              >
-                {this.state.loading && (
-                  <span className="spinner-border spinner-border-sm"></span>
-                )}
-                <span>Login</span>
-              </button>
-            </div>
-            {this.state.message && (
-              <div className="form-group">
-                <div className="alert alert-danger" role="alert">
-                  {this.state.message}
-                </div>
-              </div>
-            )}
-            <CheckButton
-              style={{ display: "none" }}
-              ref={c => {
-                this.checkBtn = c;
-              }}
+            <img
+              src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-512.png"
+              alt="profile-img"
+              className="profile-img-card"
             />
-          </Form>
+            <Form
+              onSubmit={this.handleLogin}
+              ref={c => {
+                this.form = c;
+              }} className="loginForm"
+            >
+              <div className="form-group">
+                <label htmlFor="username">Username</label>
+                <Input
+                  type="text"
+                  className="form-control"
+                  name="username"
+                  value={this.state.username}
+                  onChange={this.onChangeUsername}
+                  validations={[required]}
+                />
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="password">Password</label>
+                <Input
+                  type="password"
+                  className="form-control"
+                  name="password"
+                  value={this.state.password}
+                  onChange={this.onChangePassword}
+                  validations={[required]}
+                />
+              </div>
+
+              <div className="form-group loginButtons">
+                <button
+                  className="btn btn-primary btn-block"
+                  disabled={this.state.loading}
+                >
+                  {this.state.loading && (
+                    <span className="spinner-border spinner-border-sm"></span>
+                  )}
+                  <span>Login</span>
+                </button>
+              </div>
+              {this.state.message && (
+                <div className="form-group">
+                  <div className="alert alert-danger" role="alert">
+                    {this.state.message}
+                  </div>
+                </div>
+              )}
+              <CheckButton
+                style={{ display: "none" }}
+                ref={c => {
+                  this.checkBtn = c;
+                }}
+              />
+            </Form>
           </div>
         </div>
       </div>

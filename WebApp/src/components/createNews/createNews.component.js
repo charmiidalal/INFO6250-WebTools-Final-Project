@@ -158,7 +158,7 @@ function CreateNews() {
   // when clicked it sets task as completed
   const scrapNews = async (e) => {
     e.stopPropagation()
-    if(news_page == ""){
+    if(news_page === ""){
       alert("Please add Page no to scrap!");
     }else{
       await APIHelper.scrapNews(news_page)

@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.springframework.http.HttpHeaders;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -26,12 +26,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
- * @author manushpatel
+ * @author charmidalal
  */
 @CrossOrigin(origins = "**", allowedHeaders = "*")
 @Controller
 public class SignUpController {
 
+    @Autowired
+    UserDao userDao;
+
+    /* Filters Cors headers & requests */
     @CrossOrigin(origins = "**", allowedHeaders = "*")
     @RequestMapping(value = "/signup.htm", method = RequestMethod.OPTIONS)
     public void corsHeaders(HttpServletResponse response) {
@@ -40,49 +44,45 @@ public class SignUpController {
 
     }
 
+    /* Checks if user with same username or email exists & if not then creates account */
     @CrossOrigin(origins = "**", allowedHeaders = "*")
     @RequestMapping(value = "/signup.htm", method = RequestMethod.POST)
-    public ResponseEntity<String> UserSignup(HttpServletRequest request, HttpServletResponse response, @RequestBody String body) throws JsonProcessingException {
+    public ResponseEntity<String> UserSignup(@Autowired User user, HttpServletRequest request, HttpServletResponse response, @RequestBody String body) throws JsonProcessingException {
         Validation validation = new Validation();
         Map<String, String> result
                 = new ObjectMapper().readValue(body, HashMap.class);
-        UserDao userDao = new UserDao();
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Custom-Header", "foo");
         String username = result.get("username");
         String password = result.get("password");
         String email = result.get("email");
         User uap = userDao.getUser(username);
         if (uap != null) {
             return new ResponseEntity<>(
-                    "{ \"message\": \"Username is already taken!\" }", headers, HttpStatus.UNAUTHORIZED);
+                    "{ \"message\": \"Username is already taken!\" }", HttpStatus.UNAUTHORIZED);
         }
         uap = userDao.getEmail(email);
         if (uap != null) {
             return new ResponseEntity<>(
-                    "{ \"message\": \"Email is already taken!\" }", headers, HttpStatus.UNAUTHORIZED);
+                    "{ \"message\": \"Email is already taken!\" }", HttpStatus.UNAUTHORIZED);
         }
         if (!validation.passwordPatternCorrect(password) || password.trim().length() < 6) {
             return new ResponseEntity<>(
-                    "{ \"message\": \"Password must be 6 letter long and include alphanumeric string !\" }", headers, HttpStatus.UNAUTHORIZED);
+                    "{ \"message\": \"Password must be 6 letter long and include alphanumeric string !\" }", HttpStatus.UNAUTHORIZED);
         }
-        userDao.createUser(username, password, "user", email);
-        return new ResponseEntity<>("{ \"message\": \"User was registered successfully!\" }", headers, HttpStatus.OK);
+        userDao.createUser(user, username, password, "user", email);
+        return new ResponseEntity<>("{ \"message\": \"User was registered successfully!\" }", HttpStatus.OK);
     }
 
+    /* Deletes user's account */
     @CrossOrigin(origins = "**", allowedHeaders = "*")
     @RequestMapping(value = "/DeleteUser.htm", method = RequestMethod.POST)
     public ResponseEntity<String> DeleteUser(@RequestParam String username, HttpServletRequest request, HttpServletResponse response) throws JsonProcessingException {
-        UserDao ad = new UserDao();
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Custom-Header", "foo");
-        User uap = ad.getUser(username);
+        User uap = userDao.getUser(username);
         if (uap != null) {
-            ad.deleteUser(uap);
+            userDao.deleteUser(uap);
             return new ResponseEntity<>("Success", HttpStatus.OK);
         } else {
             return new ResponseEntity<>(
-                    "Unauthorized", headers, HttpStatus.UNAUTHORIZED);
+                    "Unauthorized", HttpStatus.UNAUTHORIZED);
         }
     }
 }

@@ -16,7 +16,7 @@ export const setTheme = () => {
   let localTheme = localStorage.getItem('theme');
 
   if (localTheme === undefined || localTheme === null) {
-    localTheme = 'dark';
+    localTheme = 'light';
     document.body.style.backgroundColor = '#ccc';
     localStorage.setItem('theme', localTheme);
   }
@@ -86,10 +86,10 @@ export const setTopNews = (url, page) => async (dispatch, getState) => {
     if (page === 1) {
       dispatch({ type: CLEAR_TOP_NEWS });
     }
-   // const { pageSize } = getState().news;
+    //const { pageSize } = getState().news;
     const newsItems = await axios.get(
-      // `${url}&apiKey=${newsApiKey}&page=${page}&pageSize=${pageSize}`
-      `${url}`
+      //  `${url}?page=${page}&pageSize=${pageSize}`
+     `${url}`
     );
     if (newsItems) {
       dispatch({

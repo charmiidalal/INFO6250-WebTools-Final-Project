@@ -22,4 +22,7 @@
     <!-- ADD PERSISTENCE SUPPORT HERE (jpa, hibernate, etc) -->
     
 <!--<bean name="demoService" class="DemoService"/>-->
+<bean name="newsDao" class="com.me.dao.NewsDao" />
+<bean name="userDao" class="com.me.dao.UserDao" />
+<bean name="bookmarkDao" class="com.me.dao.BookmarkDao" />
 </beans>

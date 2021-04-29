@@ -1,7 +1,7 @@
 import axios from 'axios';
 import authHeader from './auth-header';
 
-const apiurl = 'http://localhost:8080/hw4/';
+const apiurl = 'http://localhost:8080/HuskyTimes/';
 
 class UserService {
   getPublicContent() {

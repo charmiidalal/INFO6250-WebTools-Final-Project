@@ -5,56 +5,60 @@
  */
 package com.me.pojo;
 
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Date;
+import java.util.List;
+import javax.persistence.Basic;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 /**
  *
- * @author manushpatel
+ * @author charmidalal
  */
+@Entity
+@Table(name = "news")
 public class News {
-    
-    private int newsID;
-    
-    @JsonProperty("source")
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long newsID;
+
+    @Basic
+    @Column
     private String source;
-
-    @JsonProperty("author")
     private String author;
-
-    @JsonProperty("title")
     private String title;
-
-    @JsonProperty("description")
     private String description;
-
-    @JsonProperty("url")
     private String url;
-
-    @JsonProperty("urlToImage")
     private String urlToImage;
-
-    @JsonProperty("publishedAt")
-    private String publishedAt;
-
-    @JsonProperty("content")
+    private Date publishedAt;
     private String content;
+    private String category;
+    private String country;
 
-    @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    @OneToMany(mappedBy = "news", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+    private List<Bookmark> bookmarks;
 
-    public int getNewsID() {
+    public List<Bookmark> getBookmarks() {
+        return bookmarks;
+    }
+
+    public void setBookmarks(List<Bookmark> bookmarks) {
+        this.bookmarks = bookmarks;
+    }
+
+    public long getNewsID() {
         return newsID;
     }
 
-    public void setNewsID(int newsID) {
+    public void setNewsID(long newsID) {
         this.newsID = newsID;
     }
 
@@ -97,7 +101,7 @@ public class News {
     public void setDescription(String description) {
         this.description = description;
     }
-    
+
     public String getUrlToImage() {
         return urlToImage;
     }
@@ -106,11 +110,11 @@ public class News {
         this.urlToImage = urlToImage;
     }
 
-    public String getPublishedAt() {
+    public Date getPublishedAt() {
         return publishedAt;
     }
 
-    public void setPublishedAt(String publishedAt) {
+    public void setPublishedAt(Date publishedAt) {
         this.publishedAt = publishedAt;
     }
 
@@ -122,14 +126,20 @@ public class News {
         this.content = content;
     }
 
-    @JsonAnyGetter
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
+    public String getCategory() {
+        return category;
     }
 
-    @JsonAnySetter
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 
 }

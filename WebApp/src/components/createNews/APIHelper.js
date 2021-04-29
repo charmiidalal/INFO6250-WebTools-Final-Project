@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:8080/hw4/"
+const API_URL = "http://localhost:8080/HuskyTimes/"
 
 async function createNews(task) {
   const response = await fetch(API_URL+"CreateNews.htm", {

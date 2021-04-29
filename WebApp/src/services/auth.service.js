@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const apiurl = "http://localhost:8080/hw4/";
+const apiurl = "http://localhost:8080/HuskyTimes/";
 
 class AuthService {
   // post username and password

@@ -5,18 +5,8 @@
  */
 package com.me.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.me.dao.NewsDao;
-import com.me.pojo.News;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -28,26 +18,28 @@ import org.springframework.web.client.RestTemplate;
 
 /**
  *
- * @author manushpatel
+ * @author charmidalal
  */
 @CrossOrigin(origins = "**", allowedHeaders = "*")
 @Controller
 public class WeatherController {
 
+    /* Fetches weather by zipcode */
     @CrossOrigin(origins = "**", allowedHeaders = "*")
     @RequestMapping(value = "/WeatherByZipcode.htm", method = RequestMethod.GET)
     public ResponseEntity<String> weatherByZipcode(@RequestParam String zipcode) throws JSONException {
-        String urlString = "https://api.openweathermap.org/data/2.5/forecast?zip="+zipcode+"&appid=7ec4719c8fca5b9800a651e5991ca88d";
+        String urlString = "https://api.openweathermap.org/data/2.5/forecast?zip=" + zipcode + "&appid=7ec4719c8fca5b9800a651e5991ca88d";
         RestTemplate restTemplate = new RestTemplate();
         String result = restTemplate.getForObject(urlString, String.class);
         JSONObject root = new JSONObject(result);
         return new ResponseEntity<>(root.toString(), HttpStatus.OK);
     }
-    
+
+    /* Feches weather by geo location coordinates */
     @CrossOrigin(origins = "**", allowedHeaders = "*")
     @RequestMapping(value = "/WeatherByLocation.htm", method = RequestMethod.GET)
-    public ResponseEntity<String> weatherByLocation(@RequestParam String lat,@RequestParam String lon) throws JSONException {
-        String urlString = "https://api.openweathermap.org/data/2.5/forecast?lat="+lat+"&lon="+lon+"&appid=7ec4719c8fca5b9800a651e5991ca88d";
+    public ResponseEntity<String> weatherByLocation(@RequestParam String lat, @RequestParam String lon) throws JSONException {
+        String urlString = "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=7ec4719c8fca5b9800a651e5991ca88d";
         RestTemplate restTemplate = new RestTemplate();
         String result = restTemplate.getForObject(urlString, String.class);
         JSONObject root = new JSONObject(result);

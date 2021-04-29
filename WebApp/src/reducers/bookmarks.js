@@ -22,7 +22,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         bookmarkItems: state.bookmarkItems.filter(
-          item => item.title !== payload.title
+          item => item.newsID !== payload.newsID
         )
       };
     case GET_BOOKMARK_ITEMS:

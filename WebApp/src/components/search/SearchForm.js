@@ -33,7 +33,7 @@ class SearchForm extends Component {
     try {
       if (this.state.coordinates) {
         const res = await axios.get(
-          `http://localhost:8080/hw4/WeatherByLocation.htm?lat=${coordinates.latitude}&lon=${coordinates.longitude}`
+          `http://localhost:8080/HuskyTimes/WeatherByLocation.htm?lat=${coordinates.latitude}&lon=${coordinates.longitude}`
         );
 
         dispatch({ type: 'UPDATE_LOCATION', payload: res.data });
@@ -45,7 +45,7 @@ class SearchForm extends Component {
       } else {
         // Get request using user input
         const res = await axios.get(
-          `http://localhost:8080/hw4/WeatherByZipcode.htm?zipcode=${zipcode}`
+          `http://localhost:8080/HuskyTimes/WeatherByZipcode.htm?zipcode=${zipcode}`
         );
 
         dispatch({ type: 'UPDATE_LOCATION', payload: res.data });

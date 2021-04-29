@@ -6,7 +6,7 @@ export const bookmarkItem = item => (dispatch, getState) => {
   const { bookmarkItems } = getState().bookmarks;
   localStorage.setItem('bookmarks', JSON.stringify([item, ...bookmarkItems]));
   if (JSON.parse(localStorage.getItem("user") != null)) { // if no user logged in
-    axios.post("http://localhost:8080/hw4/UpdateBookmarks.htm", { "username": JSON.parse(localStorage.getItem("user")).username, "bookmarks": JSON.stringify([item, ...bookmarkItems]) })
+    axios.post("http://localhost:8080/HuskyTimes/UpdateBookmarks.htm", { "username": JSON.parse(localStorage.getItem("user")).username, "bookmarks": JSON.stringify([item, ...bookmarkItems]) })
   }
   dispatch({
     type: BOOKMARK_ITEM,
@@ -22,7 +22,7 @@ export const unBookmarkItem = item => (dispatch, getState) => {
   );
   localStorage.setItem('bookmarks', JSON.stringify(newBookmarkItems));
   if (JSON.parse(localStorage.getItem("user") != null)) { // changes bookmarked items
-    axios.post("http://localhost:8080/hw4/UpdateBookmarks.htm", { "username": JSON.parse(localStorage.getItem("user")).username, "bookmarks": JSON.stringify(newBookmarkItems) })
+    axios.post("http://localhost:8080/HuskyTimes/UpdateBookmarks.htm", { "username": JSON.parse(localStorage.getItem("user")).username, "bookmarks": JSON.stringify(newBookmarkItems) })
   }
   dispatch({
     type: UNBOOKMARK_ITEM,

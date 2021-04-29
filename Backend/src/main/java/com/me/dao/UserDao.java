@@ -8,48 +8,22 @@ package com.me.dao;
 import com.me.pojo.User;
 import java.util.ArrayList;
 import org.hibernate.HibernateError;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
 
 /**
  *
- * @author manushpatel
+ * @author charmidalal
  */
-public class UserDao {
+public class UserDao extends Dao {
 
-    private static final SessionFactory sf = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
-    private Session session = null;
+    private User user;
 
-    public Session getSession() {
-        if (session == null || !session.isOpen()) {
-            session = sf.openSession();
-        }
-        return session;
-    }
-
-    public void beginTransaction() {
-        getSession().beginTransaction();
-    }
-
-    public void commit() {
-        getSession().getTransaction().commit();
-    }
-
-    public void rollback() {
-        getSession().getTransaction().rollback();
-    }
-
-    public void close() {
-        getSession().close();
-    }
-
+     /* Check duplicate value fo email of user */
     public User getEmail(String email) {
-        User user = null;
         try {
             beginTransaction();
-            Query q = getSession().createQuery("from User where email = '" + email + "'");
+            Query q = getSession().createQuery("from User where email = :email");
+            q.setParameter("email", email);
             ArrayList<User> userList = (ArrayList<User>) q.list();
             if (userList.isEmpty()) {
                 return null;
@@ -64,11 +38,12 @@ public class UserDao {
         return user;
     }
 
+    /* Finds user by username */
     public User getUser(String username) {
-        User user = null;
         try {
             beginTransaction();
-            Query q = getSession().createQuery("from User where username = '" + username + "'");
+            Query q = getSession().createQuery("from User where username = :username");
+            q.setParameter("username", username);
             ArrayList<User> userList = (ArrayList<User>) q.list();
             if (userList.isEmpty()) {
                 return null;
@@ -83,19 +58,18 @@ public class UserDao {
         return user;
     }
 
-    public boolean createUser(String username, String password, String role, String email) {
+    /* Create user with default values */
+    public boolean createUser(User userPojo, String username, String password, String role, String email) {
         try {
             beginTransaction();
-            User user = new User();
-            user.setEmail(email);
-            user.setRole("user");
-            user.setUsername(username);
-            user.setPassword(password);
-            user.setBookmarks("");
-            user.setCategories("Business,Entertainment,General,Health,Science,Sports,Technology");
-            user.setCountries("United States of America,United Kingdom,Canada,China,Russia,France," +
-            "Philippines,United Arab Emirates,Australia,Argentina,South Korea,Indonesia");
-            getSession().save(user);
+            userPojo.setEmail(email);
+            userPojo.setRole("user");
+            userPojo.setUsername(username);
+            userPojo.setPassword(password);
+            userPojo.setCategories("Business,Entertainment,General,Health,Science,Sports,Technology");
+            userPojo.setCountries("United States of America,United Kingdom,Canada,China,Russia,France,"
+                    + "Philippines,United Arab Emirates,Australia,Argentina,South Korea,Indonesia");
+            getSession().save(userPojo);
             commit();
         } catch (HibernateError e) {
             rollback();
@@ -104,7 +78,8 @@ public class UserDao {
         }
         return true;
     }
-    
+
+    /* Update user from User table */
     public boolean updateUser(User user) {
         try {
             beginTransaction();
@@ -117,7 +92,8 @@ public class UserDao {
         }
         return true;
     }
-    
+
+    /* Delete user from User table */
     public boolean deleteUser(User user) {
         try {
             beginTransaction();
@@ -130,5 +106,5 @@ public class UserDao {
         }
         return true;
     }
-    
+
 }
